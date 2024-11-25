@@ -4,19 +4,49 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KIKLI - Moda Minimalista</title>
+    <title>Ecommerce - Moda Minimalista</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <style>
+      .vapi-btn {
+          position: fixed !important;
+          z-index: 1070 !important;
+      }
+    </style>
     <script>
       var vapiInstance = null;
       const assistant = "ea2dd4b7-9ca8-4d88-abe1-f117af7bef74";
       const apiKey = "207d5a15-1f94-4bf7-8fe9-039ba1754a72";
-      const buttonConfig = {
-        position: 'bottom-right',
-        autoOpen: true,
-        text: '¿Necesitas ayuda?'
+      const buttonConfig = {position: "bottom-right", // "bottom" | "top" | "left" | "right" | "top-right" | "top-left" | "bottom-left" | "bottom-right"
+        offset: "40px", // decide how far the button should be from the edge
+        width: "50px", // min-width of the button
+        height: "50px", // height of the button
+        idle: {
+          // button state when the call is not active.
+          color: `rgb(255, 20, 147)`, // bright pink color
+          type: "pill", // or "round"
+          title: "Tienes alguna pregunta?", // only required in case of Pill
+          subtitle: "Habla con el asistente virtual", // only required in case of pill
+          icon: `https://unpkg.com/lucide-static@0.321.0/icons/phone.svg`,
+        },
+        loading: {
+          // button state when the call is connecting
+          color: `rgb(93, 124, 202)`,
+          type: "pill", // or "round"
+          title: "Connecting...", // only required in case of Pill
+          subtitle: "Please wait", // only required in case of pill
+          icon: `https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg`,
+        },
+        active: {
+          // button state when the call is in progress or active.
+          color: `rgb(255, 0, 0)`,
+          type: "pill", // or "round"
+          title: "Call is in progress...", // only required in case of Pill
+          subtitle: "End the call.", // only required in case of pill
+          icon: `https://unpkg.com/lucide-static@0.321.0/icons/phone-off.svg`,
+        },
       };
 
       (function (d, t) {
